@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block contenido %}
+ <div class="col-md-12">
+           <div class="panel panel-inverse">
+               <div class="panel-heading">
+                   <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title"></h4>
+                </div>
+                
+                <
+                
+                
+                {% if messages %}
+	                <ul class="messages">
+					    {% for message in messages %}
+					    <!--<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
+					    <div class="alert alert-danger"> {{ message }} </div>
+					    {% endfor %}
+					</ul>
+                {% endif %}
+                
+                        <div class="panel-body">
+                        	
+                        	<center>
+                        		<h1>Pizzas mas Vendidas</h1>
+                        		</br></br>
+					    	<div class="row">
+					    		{% for key, value in pizzas_vendidas.items %}
+						    		<div class="col-md-12 ui-sortable">
+											<div class="form-group">
+												<label for="inputName" class="control-label">{{ key }}:       </label>
+												<label for="inputName" class="control-label"> {{ value }}</label>
+											</div>
+									</div>
+								{% endfor %}
+					    	</div>
+					    	</center>
+						</div>
+					</div>
+                </div>
+               
+</div>
+
+{% endblock contenido %}
+
+{% block plugins %}
+
+
+	<script>
+			$(document).ready(function() {
+				
+				App.init();
+
+
+			});
+	</script>
+
+
+
+
+{% endblock plugins %}

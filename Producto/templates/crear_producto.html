@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+
+{% block extrahead %}
+		<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="{% static 'plugins/DataTables/media/css/dataTables.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/AutoFill/css/autoFill.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/ColReorder/css/colReorder.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/KeyTable/css/keyTable.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/RowReorder/css/rowReorder.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Select/css/select.bootstrap.min.css' %}" rel="stylesheet" />
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+	
+	<!--<script src = "{% static 'plugins/DataTables/media/js/jquery.dataTables.js' %}"></script>-->
+	<!--<script src="{% static 'plugins/jquery/jquery-1.9.1.min.js' %}"></script>-->
+
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+
+{% endblock extrahead %}
+
+{% block contenido %}
+
+<!--Contenido encargado de las funcionalidades JS-->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/validaciones_crear_producto.js' %}"></script>    
+
+	<script>
+			$(document).ready(function() {
+				
+				App.init();
+			
+			});
+	</script>
+
+<!--final de las funcionalidades con JS-->
+
+ <div class="col-md-12">
+           <div class="panel panel-inverse">
+               <div class="panel-heading">
+                   <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title">CREAR PRODUCTO</h4>
+                    </div>
+                        <div class="panel-body">
+                            
+                           <form class="form-horizontal " action="{% url 'producto:nuevoProducto' %}"  
+                            name="formulario"  id="formularioCrear" method="POST" enctype="multipart/form-data"> {% csrf_token %} 
+                            
+                                <div class="col-md-6 ui-sortable form-horizontal">
+                                    <div class="col-md-12 ui-sortable">
+                                        
+                                        <div class="form-group">
+                    
+                                        
+                                            <label class="col-md-4 control-label ui-sortable">Nombre: </label>
+                                        
+                                            <div class="col-md-8 ui-sortable">
+                                                <input name= "nombre" id="nombre" type="text" class="form-control" >
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                            
+                                    <div class="col-md-12 ui-sortable">
+                                    
+                                        <div class="form-group">
+                                        
+                                            <label class="col-md-4 control-label ui-sortable">Referencia: </label>
+                                        
+                                            <div class="col-md-8 ui-sortable ">
+                                                <input name= "referencia" id="referencia" type="text" class="form-control" >
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 ui-sortable">
+                                    
+                                        <div class="form-group">
+                                        
+                                            <label class="col-md-4 control-label ui-sortable">Porciones: </label>
+                                        
+                                            <div class="col-md-8 ui-sortable ">
+                                                <input name= "porciones" id="porciones"  type="text" class="form-control" >
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 ui-sortable">
+                                    
+                                        <div class="form-group">
+                                        
+                                            <label class="col-md-4 control-label ui-sortable">Precio Base: </label>
+                                        
+                                            <div class="col-md-8 ui-sortable ">
+                                                <input name= "precio" id="precio" type="text" class="form-control" >
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 ui-sortable">
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label ui-sortable">Imagen: </label>
+                                            <div class="col-md-8 ui-sortable ">
+                                                <fieldset>
+                                                  <div >
+                                                    <div class="row fileupload-buttonbar">
+                                                      <div class="col-md-7">
+                                                        <span>
+                                                            <input type="file" name="imagen" id="imagen" accept="image/*" >
+                                                        </span>                          
+                                                      </div>
+                                                     <!--<div class="col-md-2 ui-sortable">
+                                                        <button type="submit" onclick="deshabilita(form)" name="files"style="background: #d93434; margin: auto;" class="btn btn-success start">
+                                                            <i class="fa fa-upload"></i>
+                                                            <span>Cargar</span>
+                                                        </button>
+                                                    </div>-->
+                                                  </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12 ui-sortable">
+                                    
+                                        <div class="form-group">
+                                        
+                                            <label class="col-md-4 control-label ui-sortable">Descripción: </label>
+                                            
+                                            <div class="col-md-8 ui-sortable">
+                                                <textarea name= "descripcion" id="descripcion" class="form-control"  rows="5"></textarea>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                
+                                </div>
+                                
+                                <div class="col-md-6 ui-sortable form-horizontal">
+                                    
+                                    <div class="col-md-12 ui-sortable">
+                                        <div class="form-group">
+                                                <label class="col-md-4 control-label ui-sortable">Toppings: </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 ui-sortable">
+                                        <div class="form-group">
+                                        {% for i in toppings %}
+                                            <div >
+                                                <input  type="checkbox" id="toppings" name="toppings" value="{{i.codigo}}">
+                                                {{i.nombre}}
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                                
+                            <div class="col-md-12 ui-sortable"> 
+                                <div class="col-md-2 col-md-offset-2 ui-sortable">
+                                    <button  class="btn btn-success m-r-5 m-b-5 Crear">Aceptar</button>
+                                
+                                </div>
+                                </form>
+                                
+                                <form action="{% url 'producto:listarProducto' %}"  method="get" id="frmEditar">{% csrf_token %}
+                                    <div class = "col-md-3 ui-sortable form-horizontal">
+                                        <button class="btn btn-danger m-r-5 m-b-5">Cancelar</button>
+                                            
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                             
+                             
+					    </div>
+                    </div>
+		        </div>
+
+{% endblock contenido %}
+
+{% block plugins %}
+
+
+	<script>
+			$(document).ready(function() {
+				
+				App.init();
+
+
+			});
+	</script>
+
+
+
+
+{% endblock plugins %}
+

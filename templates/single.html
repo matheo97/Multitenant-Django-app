@@ -1,0 +1,361 @@
+{% load static %}
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Luxury Watches A Ecommerce Category Flat Bootstarp Resposive Website Template | Single :: w3layouts</title>
+<link href="{% static 'landing/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="{% static 'landing/js/jquery-1.11.0.min.js' %}"></script>
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="{% static 'landing/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--start-menu-->
+<script src="{% static 'landing/js/simpleCart.min.js' %}"> </script>
+<link href="{% static 'landing/css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/memenu.js"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!--dropdown-->
+<script src="js/jquery.easydropdown.js"></script>	
+<script type="text/javascript">
+	$(function() {
+	
+	    var menu_ul = $('.menu_drop > li > ul'),
+	           menu_a  = $('.menu_drop > li > a');
+	    
+	    menu_ul.hide();
+	
+	    menu_a.click(function(e) {
+	        e.preventDefault();
+	        if(!$(this).hasClass('active')) {
+	            menu_a.removeClass('active');
+	            menu_ul.filter(':visible').slideUp('normal');
+	            $(this).addClass('active').next().stop(true,true).slideDown('normal');
+	        } else {
+	            $(this).removeClass('active');
+	            $(this).next().stop(true,true).slideUp('normal');
+	        }
+	    });
+	
+	});
+</script>		
+</head>
+<body> 
+	<!--top-header-->
+	<div class="top-header">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						<a href="carrito">
+							 <div class="total">
+								<span class="simpleCart_total"></span></div>
+								<img src="{% static 'landing/images/cart-1.png' %}" alt="" />
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Carrito Vacio</a></p>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--top-header-->
+	<!--start-logo-->
+	<div class="logo">
+		<a href="{% url 'home' %}"><h1>Pizzerias Jamundi</h1></a>
+	</div>
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue"><li class="active"><a href="{% url 'home' %}">Principal</a></li>
+						<li class="grid"><a href="#product">Productos</a>
+						</li>
+						<li class="grid"><a href="{% url 'contactenos' %}">Contactenos</a>
+						</li>
+						{% if Autenticado == 'Si' %}
+							<li class="grid"><a href="{% url 'cuenta' %}">Mi Cuenta</a>
+							</li>
+						{% else %}
+							<li class="grid"><a href="{% url 'login' %}">Login</a>
+							</li>
+						{% endif%}
+						</li>
+						<li class="grid"><a href="{% url 'registrar' %}">Registrarse</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Buscar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--bottom-header-->
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="home">Pagina Principal</a></li>
+					<li class="active">Pizza</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-single-->
+	<div class="single contact">
+		<div class="container">
+			<div class="single-main">
+				<div class="col-md-9 single-main-left">
+				<div class="sngl-top">
+					<div class="col-md-5 single-top-left">	
+						<div class="flexslider">
+							  <ul class="slides">
+								<li data-thumb="{% static producto.imagen.url %}">
+									<div class="thumb-image"> <img src="{% static producto.imagen.url %}" data-imagezoom="true" class="img-responsive" alt=""/> </div>
+								</li>
+							  </ul>
+						</div>
+						<!-- FlexSlider -->
+						<script src="{% static 'landing/js/imagezoom.js' %}"></script>
+						<script defer src="{% static 'landing/js/jquery.flexslider.js' %}"></script>
+						<link rel="stylesheet" href="{% static 'landing/css/flexslider.css' %}" type="text/css" media="screen" />
+
+						<script>
+						// Can also be used with $(document).ready()
+						$(window).load(function() {
+						  $('.flexslider').flexslider({
+							animation: "slide",
+							controlNav: "thumbnails"
+						  });
+						});
+						</script>
+					</div>	
+					<div class="col-md-7 single-top-right">
+						<div class="single-para simpleCart_shelfItem">
+						<h2>{{ producto.nombre }}</h2>
+							<div class="star-on">
+								<ul class="star-footer">
+										<li><a href="#"><i> </i></a></li>
+										<li><a href="#"><i> </i></a></li>
+										<li><a href="#"><i> </i></a></li>
+										<li><a href="#"><i> </i></a></li>
+										<li><a href="#"><i> </i></a></li>
+									</ul>
+								<div class="review">
+									<a href="#"> 1 calificacion cliente </a>
+									
+								</div>
+							<div class="clearfix"> </div>
+							</div>
+							
+							<h5 class="item_price">$ {{ producto.precioBase }}</h5>
+							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+							<div class="available">
+								
+								<ul>
+									<ul>
+										<li>Porciones
+											<select>
+											<option>5</option>
+											<option>8</option>
+											<option>14</option>
+											<option>22</option>
+											<option>34</option>
+											</select>
+										</li>
+									<ul>
+										
+									<section  class="sky-form">
+										<h4>Toppings</h4>
+										<div class="row1 row2 scroll-pane">
+											<div class="col col-4">
+												<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>kurtas</label>
+											</div>
+											<div class="col col-4">
+												
+												{% for topping in producto.toppings %}
+													<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>topping.nombre</label>
+												{% endfor %}
+											</div>
+										</div>
+									</section>
+								</ul>
+						</div>
+							<ul class="tag-men">
+								<li><span>TAG</span>
+								<span class="women1">: Women,</span></li>
+								<li><span>SKU</span>
+								<span class="women1">: CK09</span></li>
+							</ul>
+								<a href="#" class="add-cart item_add">ADD TO CART</a>
+							
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="tabs">
+					<ul class="menu_drop">
+				<li class="item1"><a href="#"><img src="{% static 'landing/images/arrow.png' %}" alt="">Description</a>
+					<ul>
+						<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
+						<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
+						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+					</ul>
+				</li>
+				<li class="item2"><a href="#"><img src="{% static 'landing/images/arrow.png' %}" alt="">Additional information</a>
+					<ul>
+					    <li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
+						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+					</ul>
+				</li>
+				<li class="item3"><a href="#"><img src="{% static 'landing/images/arrow.png' %}" alt="">Reviews (10)</a>
+					<ul>
+						<li class="subitem1"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</a></li>
+						<li class="subitem2"><a href="#"> Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore</a></li>
+						<li class="subitem3"><a href="#">Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes </a></li>
+					</ul>
+				</li>
+	 		</ul>
+				</div>
+				<div class="latestproducts">
+					<div class="product-one">
+						<div class="col-md-4 product-left p-left"> 
+							<div class="product-main simpleCart_shelfItem">
+								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="{% static 'landing/images/p-1.png' %}" alt="" /></a>
+								<div class="product-bottom">
+									<h3>Smart Watches</h3>
+									<p>Explore Now</p>
+									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								</div>
+								<div class="srch">
+									<span>-50%</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-left p-left"> 
+							<div class="product-main simpleCart_shelfItem">
+								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="{% static 'landing/images/p-2.png' %}" alt="" /></a>
+								<div class="product-bottom">
+									<h3>Smart Watches</h3>
+									<p>Explore Now</p>
+									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								</div>
+								<div class="srch">
+									<span>-50%</span>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 product-left p-left"> 
+							<div class="product-main simpleCart_shelfItem">
+								<a href="single.html" class="mask"><img class="img-responsive zoom-img" src="{% static 'landing/images/p-3.png' %}" alt="" /></a>
+								<div class="product-bottom">
+									<h3>Smart Watches</h3>
+									<p>Explore Now</p>
+									<h4><a class="item_add" href="#"><i></i></a> <span class=" item_price">$ 329</span></h4>
+								</div>
+								<div class="srch">
+									<span>-50%</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Desde aqui -->
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--end-single-->
+	<!--information-starts-->
+	<div class="information">
+		<div class="container">
+			<div class="infor-top">
+				<div class="col-md-3 infor-left">
+					<h3>Siguenos</h3>
+					<ul>
+						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Informacion</h3>
+					<ul>
+						<li><a href="#"><p>Ofertas</p></a></li>
+						<li><a href="#"><p>Nuevos Productos</p></a></li>
+						<li><a href="#"><p>Nuestras Tiendas</p></a></li>
+						<li><a href="contactenos"><p>Contactenos</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Mi Cuenta</h3>
+					<ul>
+						<li><a href="#"><p>Devoluciones</p></a></li>
+						<li><a href="#"><p>Mi Perfil</p></a></li>
+						<li><a href="#"><p>Mis Direcciones</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Store Information</h3>
+					<h4>The company name,
+						<span>Lorem ipsum dolor,</span>
+						Glasglow Dr 40 Fe 72.</h4>
+					<h5>+955 123 4567</h5>	
+					<p><a href="mailto:example@email.com">contact@example.com</a></p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					<form>
+						<input type="text" value="Ingresa tu Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Ingresa tu Email';}">
+						<input type="submit" value="Subscribirse">
+					</form>
+				</div>
+				<div class="col-md-6 footer-right">					
+					<p>© 2018 Pizzerias Jamundi. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->	
+</body>
+</html>

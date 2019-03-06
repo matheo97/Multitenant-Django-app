@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
+{% block extrahead %}
+
+    <link href="{% static 'plugins/jquery-ui-1.10.4/themes/base/minified/jquery-ui.min.css' %}" rel="stylesheet" />
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="{% static 'plugins/DataTables/media/css/dataTables.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Buttons/css/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Responsive/css/responsive.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/AutoFill/css/autoFill.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/ColReorder/css/colReorder.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/KeyTable/css/keyTable.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/RowReorder/css/rowReorder.bootstrap.min.css' %}" rel="stylesheet" />
+	<link href="{% static 'plugins/DataTables/extensions/Select/css/select.bootstrap.min.css' %}" rel="stylesheet" />
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+	
+	<!--<script src = "{% static 'plugins/DataTables/media/js/jquery.dataTables.js' %}"></script>-->
+	<!--<script src="{% static 'plugins/jquery/jquery-1.9.1.min.js' %}"></script>-->
+
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+	
+
+{% endblock extrahead %}
+
+
+{% block contenido %}
+
+<!--Contenido encargado de las funcionalidades JS-->
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script src="{% static 'js/eliminar_producto.js' %}"></script>    
+    <script src="{% static  'js/gallery.demo.min.js' %}"></script>
+	<script src="{% static 'js/apps.min.js' %}"></script>
+
+	<!-- ================== END PAGE LEVEL JS ================== -->
+	<script>
+		$(document).ready(function() {
+			App.init();
+			Gallery.init();
+		});
+	</script>
+<!--final de las funcionalidades con JS-->
+ <!-- #modal-dialog -->
+              <div class="modal fade" id="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                      <h4 class="modal-title">Mensaje</h4>
+                    </div>
+                    <div id="dialog-modal-body" class="modal-body">
+                      {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <div class="alert alert-success fade in m-b-15">
+                          <strong>Exito!</strong>
+                          {{ message }}
+                          <span class="close" data-dismiss="alert">&times;</span>
+                        </div>
+                        {% endif %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                        <div class="alert alert-info fade in m-b-15">
+                          <strong>Información!</strong>
+                          {{ message }}
+                          <span class="close" data-dismiss="alert">&times;</span>
+                        </div>
+                        {% endif %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                        <div class="alert alert-warning fade in m-b-15">
+                          <strong>Advertencia!</strong>
+                          {{ message }}
+                          <span class="close" data-dismiss="alert">&times;</span>
+                        </div>
+                        {% endif %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div class="alert alert-danger fade in m-b-15">
+                          <strong>Error!</strong>
+                          {{ message }}
+                          <span class="close" data-dismiss="alert">&times;</span>
+                        </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="modal-footer">
+                      <a href="javascript:;" class="btn btn-sm btn-success" data-dismiss="modal">Aceptar</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+<div class="col-md-12 ui-sortable">
+	<div class="col-md-12 ui-sortable">
+		<h2> <B>Pizzas  </B></h2>
+	</div>
+	<div class="col-md-12 ui-sortable">
+        {% for e in pro %}
+        <div  class="col-md-12 ui-sortable" style="height:250px; padding: 20px;  background:#FFFFFF ; ">
+            <div  class="col-md-3 ui-sortable" style="height:250px; ">
+    	
+                <div class="image-inner">
+                     
+                    <a href="" data-lightbox="gallery-group-1">
+                        <img src={{e.producto.imagen.url}}   style="width:100%;height:210px;"/>
+                    </a>
+                </div>
+            </div>
+            <form action="{% url 'venta:venta' %}" method="post" class="margin-bottom-0"> {% csrf_token %}
+                <div  class="col-md-6 ui-sortable" style="height:400px;">
+                    <div class="image-info">
+                       
+                        <div class="desc">
+                        	<input type="hidden" id="referencia" name="referencia" value={{e.producto.referencia}} >
+                            <h3 class="title"><b><center>{{e.producto.nombre}} ${{e.producto.precioBase}}</center></b></h3>
+                            </p></p>
+                            <h5>
+                            {{e.producto.descripcion}}</h5>
+                        </div>         
+                        <div  class="col-md-12 ui-sortable" >
+                        	{% for i in e.toppings%}
+                        		<div  class="col-md-6 ui-sortable" >
+                        			<input  type="checkbox" id="toppings" name="toppings" value="{{i.codigo}}">
+                                    {{i.nombre}} ${{i.precio}}
+                        		</div>
+                        	{% endfor %}
+                        </div>
+                                   
+                    </div>
+                </div>
+                <div class="col-md-3 ui-sortable"> 
+                    <div class="form-horizontal form-bordered" style="  margin-top: 100px;"> 
+                        <center><button  type="submit" class=" btn btn-primary btn-lg m-r-5 form-control">Añadir </button></center>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% endfor %}
+	</div>  
+</div>
+
+{% endblock contenido %}
+
+{% block plugins %}
+		
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	
+	<script src = "{% static 'plugins/DataTables/media/js/dataTables.bootstrap.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/dataTables.buttons.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/buttons.bootstrap.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/buttons.flash.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/jszip.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/pdfmake.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/vfs_fonts.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/buttons.html5.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Buttons/js/buttons.print.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Responsive/js/dataTables.responsive.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/AutoFill/js/dataTables.autoFill.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/ColReorder/js/dataTables.colReorder.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/KeyTable/js/dataTables.keyTable.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/RowReorder/js/dataTables.rowReorder.min.js' %}"></script>
+	<script src = "{% static 'plugins/DataTables/extensions/Select/js/dataTables.select.min.js' %}"></script>
+	<script src = "{% static 'js/table-manage-combine.demo.min.js' %}"></script>
+	
+	
+	<!-- ================== END PAGE LEVEL JS ================== -->
+
+
+
+{% endblock plugins %}

@@ -1,0 +1,49 @@
+{% extends 'base_tenant.html' %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block miga_pan %}
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Tenants</a>
+    <li class="active">Registrar Tenant</li>
+{% endblock miga_pan %}
+
+{% block titulo_pagina %}
+    Registrar Tenant
+{% endblock titulo_pagina %}
+
+{% block titulo %}
+    Registrar Tenant
+{% endblock titulo %}
+
+
+{% block contenido %}
+    <div class="col-lg-10 col-lg-offset-1">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Registrar Tenant</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data" id="usuario-form">{% csrf_token %}
+                            {% bootstrap_form form  %}
+                            <center> {% bootstrap_button "Guardar" button_type="submit" button_class="btn-primary"%}</center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock contenido %}

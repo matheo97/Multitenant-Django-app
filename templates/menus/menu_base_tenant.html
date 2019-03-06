@@ -1,0 +1,17 @@
+{% load url from tenant %}
+{% comment %}
+	Aquí deben ir los enlaces a los menús de cada sección de la aplicación.
+{% endcomment %}
+
+<li class="has-sub">
+
+	<li class="has-sub">
+		<li><a href="{% url 'crear_administrador_tenants' %}">Crear Administrador</a></li>
+		<li><a href="{% url 'listar_usuario_administrador' %}">Listar Administrador</a></li>
+		<li><a href="{% url 'crear_tenant' %}">Crear Franquicia</a></li>
+		<li><a href="{% url 'listar_tenant' %}">Listar Franquicias</a></li>
+		<li><a href="{% url 'iniciar_sesion' %}">Iniciar Sesion</a></li>
+		<li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesion</a></li>
+	</li>
+	
+</li>

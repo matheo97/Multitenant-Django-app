@@ -1,0 +1,15 @@
+alerta
+{
+    font-size: 30px;
+    color: red;
+}
+precio
+{
+    font-size: 15px;
+    color: red;
+}
+
+.caja{
+    border-style: solid;
+    border-width: 2px;
+}

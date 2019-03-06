@@ -1,0 +1,322 @@
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+{% include 'messages.html' %}
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pizzerias Jamundi</title>
+<link href="{% static 'landing/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="js/jquery-1.11.0.min.js"></script>
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="{% static 'landing/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--start-menu-->
+<script src="{% static 'landing/js/simpleCart.min.js' %}"> </script>
+<link href="{% static 'landing/css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link href="{% static 'css/estilo.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="{% static 'landing/js/memenu.js' %}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!--dropdown-->
+<script src="{% static 'landing/js/jquery.easydropdown.js' %}"></script>			
+</head>
+<body style="{{ font }}" > 
+	<!--top-header-->
+	<div class="top-header" style="background: {{ color }} ;">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						<a href="checkout.html">
+							 <div class="total">
+								<span class="simpleCart_total"></span></div>
+								<img src="{% static 'landing/images/cart-1.png' %}" alt="" />
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Carrito Vacio</a></p>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--top-header-->
+	<!--start-logo-->
+	<div class="logo">
+		<a href="{% url 'home' %}"><h1 style="{{ font }}">Pizzerias Jamundi</h1></a>
+	</div>
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue"><li class="active"><a href="{% url 'home' %}">Principal</a></li>
+						<li class="grid"><a href="{% url 'venta:venta' %}" >Productos</a>
+						</li>
+						<li class="grid"><a href="{% url 'contactenos' %}">Contactenos</a>
+						</li>
+						{% if Autenticado == 'Si' %}
+							<li class="grid"><a href="{% url 'cuenta' %}">Mi Cuenta</a>
+							</li>
+						{% else %}
+							<li class="grid"><a href="{% url 'login' %}">Login</a>
+							</li>
+						{% endif%}
+						</li>
+						<li class="grid"><a href="{% url 'registrar' %}">Registrarse</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Buscar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--bottom-header-->
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="{% url 'home' %}">Pagina Principal</a></li>
+					<li class="active">Carrito</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--start-ckeckout-->
+	<div class="ckeckout">
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<div class="container">
+			<div class="ckeck-top heading">
+				<h2>CHECKOUT</h2>
+			</div>
+			<div class="ckeckout-top">
+			<div class="cart-items">
+			{% if option %}
+			<div class="col-md-4 col-md-offset-4 ui-sortable caja">
+				<alerta>Recibo:</alerta> </p>
+				<h4>Nombre: {{nombre}} </h4> 
+				<h4>Dirección: {{direccion}} </h4> 
+				<h4>Tarjeta: {{tarjeta}} </h4> 
+				<h4>Su pedido llegará en 30 min</h4>
+				<h6>imprimir :
+				<a href={{recibo.doc.url}} download="ReciboPizza">
+					<img src="{% static 'img/impr.jpg' %}" style="width:15px; height:15px;" alt="" />
+				</a> </h6>
+			</div>
+			
+			{% else %}	
+			 <h3>Mi Carrito</h3>
+				<script>$(document).ready(function(c) {
+					$('.close1').on('click', function(c){
+						$('.cart-header').fadeOut('slow', function(c){
+							$('.cart-header').remove();
+						});
+						});	  
+					});
+			   </script>
+			<script>$(document).ready(function(c) {
+					$('.close2').on('click', function(c){
+						$('.cart-header1').fadeOut('slow', function(c){
+							$('.cart-header1').remove();
+						});
+						});	  
+					});
+			   </script>
+			   <script>$(document).ready(function(c) {
+					$('.close3').on('click', function(c){
+						$('.cart-header2').fadeOut('slow', function(c){
+							$('.cart-header2').remove();
+						});
+						});	  
+					});
+			   </script>
+				
+			<div class="in-check" >
+				{% if not user.is_autenticated%}
+				<ul ><alerta>{{message}}</alerta> </ul>
+				{% endif %}
+				<ul class="unit">
+					<li><span>Item</span></li>
+					<li><span>Nombre de Producto</span></li>		
+					<li><span>Precio Unidad</span></li>
+					<li><span>toppings</span></li>
+					<li><span>Detalles de Envio</span></li>
+					<li> </li>
+					<div class="clearfix"> </div>
+				</ul>
+				<!--Aqui se iteran los productos del carrito-->
+				{% for i in carrito.pizza.all %}
+				<ul class="cart-header">
+					<div class="close1"> </div>
+						<li class="ring-in"><a href="single.html" ><img src={{i.pizza.imagen.url}} class="img-responsive" alt=""></a>
+						</li>
+						<li><span class="name">{{i.pizza.nombre}}</span></li>
+						<li><span class="cost">${{i.pizza.precioBase}}</span></li>
+						<li>
+							{% for e in i.toppings.all %}
+								{{e.nombre}} ${{e.precio}}<br>
+							{% endfor %}</li>
+						<li>Domicilio $2000
+						<p>30 min</p></li>
+					<div class="clearfix"> </div>
+				</ul>
+				{% endfor %}
+				
+			</div>
+			<form name="frmComprar" id ="frmComprar" action="{% url 'venta:ventaRegistrada' %}" method="post" class="margin-bottom-0"> {% csrf_token %}
+				<div >
+					
+					<script src="{% static 'js/validaciones_comprar.js' %}"></script>    
+					<div class="col-md-9 ui-sortable form-horizontal" >
+						<h1> Información de envío</h1>
+						<div class="col-md-6 ui-sortable">
+                                    
+                            <div class="form-group">
+                            
+                                <label class="col-md-4 control-label ui-sortable">Nombre: </label>
+                            
+                                <div class="col-md-8 ui-sortable ">
+                                    <input name= "nombre" id="nombre"  type="text" class="form-control" >
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <div class="col-md-6 ui-sortable">
+                            <div class="form-group">
+                            
+                                <label class="col-md-4 control-label ui-sortable">Direccion: </label>
+                            
+                                <div class="col-md-8 ui-sortable ">
+                                    <input name= "dir" id="dir"  type="text" class="form-control" >
+                                </div>
+                            
+                            </div>
+                        </div>
+                        <h1> Información de pago</h1>
+                        <div class="col-md-6 ui-sortable">
+                            <div class="form-group">
+                            
+                                <label class="col-md-4 control-label ui-sortable">Nº Tarjeta: </label>
+                            
+                                <div class="col-md-8 ui-sortable ">
+                                    <input name= "tar" id="tar"  type="text" class="form-control" >
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-md-3 ui-sortable " >
+						<div class="col-md-12 ui-sortable " style="margin-bottom: 15px;"  >
+							<h1>Recibo</h1>
+							SubTotal:{{subtotal}} <br>
+							Envio: $2000<br>
+							<precio>Total: $ {{total}}</precio><br>
+						</div>
+						<div class=" col-md-5 submit-btn ui-sortable" >
+							
+							 <button  class=" Comprar">Comprar</button>
+						</div >
+			</form>
+			<form action="{% url 'venta:venta' %}" method="get" class="margin-bottom-0"> {% csrf_token %}
+						<div class="col-md-6 submit-btn">
+							 <button  type="submit"> Ir a la lista </button>
+						</div>
+					</div>	
+				</div>
+			</form>
+			{% endif %}
+			</div> 
+			
+			
+		 </div>
+		</div>
+	</div>
+	<!--end-ckeckout-->
+	<!--information-starts-->
+	<div class="information">
+		<div class="container">
+			<div class="infor-top">
+				<div class="col-md-3 infor-left">
+					<h3>Follow Us</h3>
+					<ul>
+						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Informacion</h3>
+					<ul>
+						<li><a href="#"><p>Ofertas</p></a></li>
+						<li><a href="#"><p>Nuevos Productos</p></a></li>
+						<li><a href="#"><p>Nuestras Tiendas</p></a></li>
+						<li><a href="contact.html"><p>Contactenos</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Mi Cuenta</h3>
+					<ul>
+						<li><a href="#"><p>Devoluciones</p></a></li>
+						<li><a href="#"><p>Mi Perfil</p></a></li>
+						<li><a href="#"><p>Mis Direcciones</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	
+
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					<form>
+						<input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+						<input type="submit" value="Subscribe">
+					</form>
+				</div>
+				<div class="col-md-6 footer-right">					
+					<p>© 2017 Pizzerias Jamundi. All Rights Reserved</p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->	
+</body>
+</html>

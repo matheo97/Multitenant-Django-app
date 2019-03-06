@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block contenido %}
+ <div class="col-md-12">
+           <div class="panel panel-inverse">
+               <div class="panel-heading">
+                   <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                    <h4 class="panel-title"></h4>
+                </div>
+                
+                <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+                <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  				<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  				
+  				<script>
+                
+                	$(document).ready(function(){
+						"use strict"; 
+						
+				         $.ajax({
+				           data:{},
+				           url: window.url_root,
+				           type: "POST",
+				           
+				           success: function(data){
+				            
+				             try {
+				               
+							 google.charts.load("current", {packages:["corechart"]});
+							   
+							   google.charts.setOnLoadCallback(function() {
+							   	
+
+							   	   var dataG = new google.visualization.DataTable();
+									  dataG.addColumn('string', 'Topping');
+									  dataG.addColumn('number', 'Popularidad');
+									  dataG.addRows([
+									    [data.referencia1, parseInt(data.valor1)],
+									    [data.referencia2, parseInt(data.valor2)],
+									    [data.referencia3, parseInt(data.valor3)],
+									  ]);
+									
+									  var options = {
+									    title: 'Referencias de Toppings mas Vendidas',
+									    sliceVisibilityThreshold: .2
+									  };
+									
+									  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+									  chart.draw(dataG, options);
+							   	
+							      
+							  })
+		        			   
+				              }catch(e){
+				                
+				               alert(e);
+				              }
+				        	},
+				         });
+					         
+                	});
+                	
+                </script>
+                
+                
+                {% if messages %}
+	                <ul class="messages">
+					    {% for message in messages %}
+					    <!--<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>-->
+					    <div class="alert alert-danger"> {{ message }} </div>
+					    {% endfor %}
+					</ul>
+                {% endif %}
+                
+                        <div class="panel-body">
+                        	<div id="chart_div" style="height:1060px;"></div>
+						</div>
+					</div>
+                </div>
+               
+</div>
+
+{% endblock contenido %}
+
+{% block plugins %}
+
+
+	<script>
+			$(document).ready(function() {
+				
+				App.init();
+
+
+			});
+	</script>
+
+
+
+
+{% endblock plugins %}

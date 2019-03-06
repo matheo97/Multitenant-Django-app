@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>
+            {% block title %} Hola {% endblock %}
+        </title>
+    </head>
+    
+    <body>
+        
+        
+        <header>
+            Esta es la pagina
+            
+        </header>
+        
+        <section id="contenedor">
+            
+            jhajfadsjf
+            naldsjflajdflajd
+            fajdflkjad
+            fhljasdflcnljd
+            fljhadsfljhadsflhg
+        </section>
+        
+        {% block script %}
+        <script type="text/javascript" src="{% static "js/hola.js"%}"></script>
+        {% endblock script %}
+    </body>
+</html>

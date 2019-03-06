@@ -1,0 +1,83 @@
+{% load url from tenant %}
+{% comment %}
+	Aquí deben ir los enlaces a los menús de cada sección de la aplicación.
+{% endcomment %}
+
+<li class="has-sub">
+	
+	<li class="has-sub">
+		<a href="javascript:;">
+		    <b class="caret pull-right"></b>
+		    <i class="fa fa-align-left"></i> 
+		    <span>Gestion Usuarios</span>
+		</a>
+		<ul class="sub-menu">
+			<li class="has-sub">
+				<a href="javascript:;">
+		            <b class="caret pull-right"></b>
+		            Crear Usuarios
+		        </a>
+				<ul class="sub-menu">
+					<li><a href="{% url 'usuario:crear_administrador' %}">Crear Administrador</a></li>
+					<li><a href="{% url 'usuario:crear_digitador' %}">Crear Digitador</a></li>
+					<li><a href="{% url 'usuario:crear_cliente' %}">Crear Cliente</a></li>
+				</ul>
+			</li>
+			<li><a href="{% url 'usuario:listar_usuario' %}">Listar Usuario</a></li>
+		</ul>
+	</li>
+	
+	
+	<li class="has-sub">
+		<a href="javascript:;">
+		    <b class="caret pull-right"></b>
+		    <i class="fa fa-align-left"></i> 
+		    <span>Gestion Productos</span>
+		</a>
+		<ul class="sub-menu">
+			<li class="has-sub">
+				<a href="javascript:;">
+		            <b class="caret pull-right"></b>
+		            Pizzas
+		        </a>
+				<ul class="sub-menu">
+			
+					<li><a href="{% url 'producto:nuevoProducto' %}">Crear Pizzas</a></li>
+					<li><a href="{% url 'producto:listarProducto' %}">Listar Pizzas</a></li>
+					
+				</ul>
+			</li>
+			<li class="has-sub">
+				<a href="javascript:;">
+				<b class="caret pull-right"></b>Toppings</a>
+				<ul class="sub-menu">
+					<li><a href="{% url 'producto:nuevoTopping' %}">Crear Topping</a></li>
+					<li><a href="{% url 'producto:listartopping' %}">Listar Toppings</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	
+	<li class="has-sub">
+		<a href="javascript:;">
+		    <b class="caret pull-right"></b>
+		    <i class="fa fa-align-left"></i> 
+		    <span>Reportes</span>
+		</a>
+		<ul class="sub-menu">
+			
+			<li><a href="{% url 'reportes:ventas_mes' %}">Ventas por Mes</a></li>
+			<li><a href="{% url 'reportes:registrados_mes' %}">Registrados por Mes</a></li>
+			<li><a href="{% url 'reportes:pizzas_mas_vendidas' %}">Pizzas mas Vendidas</a></li>
+			<li><a href="{% url 'reportes:toppings_mas_vendidas' %}">Toppings mas Vendidos</a></li>
+			<li><a href="{% url 'reportes:toppings_menos_vendidas' %}">Toppings menos Vendidos</a></li>
+			<li><a href="{% url 'reportes:dias_mas_ventas' %}">Dias con mas Ventas</a></li>
+		</ul>
+	</li>
+	
+	<li class="has-sub">
+		<li><a href="{% url 'usuario:iniciar_sesion' %}">Iniciar Sesion</a></li>
+		<li><a href="{% url 'usuario:cerrar_sesion' %}">Cerrar Sesion</a></li>
+	</li>
+					
+</li>

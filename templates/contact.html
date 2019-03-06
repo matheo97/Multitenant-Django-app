@@ -1,0 +1,209 @@
+{% load static %}
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pizzeria Jamundi</title>
+<link href="{% static 'landing/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+<script src="{% static 'landing/js/jquery-1.11.0.min.js' %}"></script>
+<!--Custom-Theme-files-->
+<!--theme-style-->
+<link href="{% static 'landing/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--start-menu-->
+<script src="{% static 'landing/js/simpleCart.min.js' %}"> </script>
+<link href="{% static 'landing/css/memenu.css' %}" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="{% static 'landing/js/memenu.js' %}"></script>
+<script>$(document).ready(function(){$(".memenu").memenu();});</script>	
+<!--dropdown-->
+<script src="{% static 'landing/js/jquery.easydropdown.js' %}"></script>			
+</head>
+<body style="{{ font }}"> 
+<!--top-header-->
+	<div class="top-header" style="background: {{ color }} ;">
+		<div class="container">
+			<div class="top-header-main">
+				<div class="col-md-6 top-header-left">
+					<div class="drop">
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="col-md-6 top-header-left">
+					<div class="cart box_1">
+						<a href="checkout.html">
+							 <div class="total">
+								<span class="simpleCart_total"></span></div>
+								<img src="{% static 'landing/images/cart-1.png' %}" alt="" />
+						</a>
+						<p><a href="javascript:;" class="simpleCart_empty">Carrito Vacio</a></p>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--top-header-->
+	<!--start-logo-->
+	<div class="logo">
+		<a href="{% url 'home' %}"><h1 style="{{ font }}" >Pizzerias Jamundi</h1></a>
+	</div>
+	<!--start-logo-->
+	<!--bottom-header-->
+	<div class="header-bottom">
+		<div class="container">
+			<div class="header">
+				<div class="col-md-9 header-left">
+				<div class="top-nav">
+					<ul class="memenu skyblue"><li class="active"><a href="{% url 'home' %}">Principal</a></li>
+						<li class="grid"><a href="{% url 'venta:venta' %}" >Productos</a>
+						</li>
+						<li class="grid"><a href="{% url 'contactenos' %}">Contactenos</a>
+						</li>
+						{% if Autenticado == 'Si' %}
+							<li class="grid"><a href="{% url 'cuenta' %}">Mi Cuenta</a>
+							</li>
+						{% else %}
+							<li class="grid"><a href="{% url 'login' %}">Login</a>
+							</li>
+						{% endif%}
+						</li>
+						<li class="grid"><a href="{% url 'registrar' %}">Registrarse</a>
+						</li>
+					</ul>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="col-md-3 header-right"> 
+				<div class="search-bar">
+					<input type="text" value="Buscar" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+					<input type="submit" value="">
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!--bottom-header-->
+	<!--start-breadcrumbs-->
+	<div class="breadcrumbs">
+		<div class="container">
+			<div class="breadcrumbs-main">
+				<ol class="breadcrumb">
+					<li><a href="index.html">Pagina Principal</a></li>
+					<li class="active">Contactenos</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+	<!--end-breadcrumbs-->
+	<!--contact-start-->
+	<div class="contact">
+		<div class="container">
+			<div class="contact-top heading">
+				<h2>CONTACTO</h2>
+			</div>
+				<div class="contact-text">
+				<div class="col-md-3 contact-left">
+						<div class="address">
+							<h5>Direccion</h5>
+							<p>Pizzerias Jamundi, 
+							<span>Alameda de Rio Claro</span>
+							Calle 10 #1B-41</p>
+						</div>
+						<div class="address">
+							<h5>Atencion al Cliente</h5>
+							<p>Tel: 5924494, 
+							<span>Tel: 5925465</span>
+							Email: <a href="mailto:example@email.com">ventas@pizzeriasjamundi.co</a></p>
+						</div>
+					</div>
+					<div class="col-md-9 contact-right">
+						<form>
+							<input type="text" placeholder="Nombre">
+							<input type="text" placeholder="Celular">
+							<input type="text"  placeholder="Email">
+							<textarea placeholder="Mensaje" required=""></textarea>
+							<div class="submit-btn">
+								<input type="submit" value="Enviar">
+							</div>
+						</form>
+					</div>	
+					<div class="clearfix"></div>
+				</div>
+		</div>
+	</div>
+	<!--contact-end-->
+	<!--map-start-->
+	<div class="map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.3783283428047!2d-76.53976268543931!3d3.255833353395972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMTUnMjEuMCJOIDc2wrAzMicxNS4zIlc!5e0!3m2!1sfr!2sco!4v1490940926913" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6632.248000703498!2d151.265683!3d-33.7832959!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12abc7edcbeb07%3A0x5017d681632bfc0!2sManly+Vale+NSW+2093%2C+Australia!5e0!3m2!1sen!2sin!4v1433329298259" style="border:0"></iframe>-->
+	</div>
+	<!--map-end-->
+	<!--information-starts-->
+	<div class="information">
+		<div class="container">
+			<div class="infor-top">
+				<div class="col-md-3 infor-left">
+					<h3>Siguenos</h3>
+					<ul>
+						<li><a href="#"><span class="fb"></span><h6>Facebook</h6></a></li>
+						<li><a href="#"><span class="twit"></span><h6>Twitter</h6></a></li>
+						<li><a href="#"><span class="google"></span><h6>Google+</h6></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Informacion</h3>
+					<ul>
+						<li><a href="#"><p>Ofertas</p></a></li>
+						<li><a href="#"><p>Nuevos Productos</p></a></li>
+						<li><a href="#"><p>Nuestras Tiendas</p></a></li>
+						<li><a href="contact.html"><p>Contactenos</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+					<h3>Mi Cuenta</h3>
+					<ul>
+						<li><a href="#"><p>Devoluciones</p></a></li>
+						<li><a href="#"><p>Mi Perfil</p></a></li>
+						<li><a href="#"><p>Mis Direcciones</p></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 infor-left">
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--information-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-top">
+				<div class="col-md-6 footer-left">
+					<form>
+						<input type="text" value="Ingresa tu Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Ingresa tu Email';}">
+						<input type="submit" value="Subscribirse">
+					</form>
+				</div>
+				<div class="col-md-6 footer-right">					
+					<p>© 2018 Pizzerias Jamundi. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->	
+</body>
+</html>
